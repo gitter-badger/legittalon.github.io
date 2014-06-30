@@ -1,0 +1,23 @@
+# Site settings
+title: Talon
+email: talon@theghostin.me
+description: "Talon lives."
+baseurl: ""
+url: "theghostin.me"
+twitter_username: legittalon
+github_username: legittalon
+
+# Build settings
+markdown: kramdown
+permalink: pretty
+
+highlighter: pygments
+
+# Defaults
+defaults:
+  -
+    scope:
+      path: "" # all
+      type: "post"
+    values:
+      layout: "post"
