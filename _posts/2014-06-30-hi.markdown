@@ -1,0 +1,18 @@
+---
+title: "Hi"
+type: post
+date:   2014-06-30 09:07:28
+categories: introduction
+---
+
+# Hello there.
+
+{% highlight javascript %}
+function sayHi () {
+	return this
+}
+
+var hi = sayHi.call('hi')
+
+alert(hi)
+{%endhighlight%}
