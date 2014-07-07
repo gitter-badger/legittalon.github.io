@@ -1,8 +1,0 @@
----
-title: "2nd"
-type: post
-date:   2014-06-30 09:07:28
-categories: introduction
----
-
-Here is a second post on my website.
