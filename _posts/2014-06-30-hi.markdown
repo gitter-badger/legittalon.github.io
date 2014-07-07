@@ -4,12 +4,11 @@ type: post
 date:   2014-06-30 09:07:28
 categories: introduction
 ---
-
-# Hello there.
+what an introduction this is.
 
 {% highlight javascript %}
 function sayHi () {
-	return this
+  return this
 }
 
 var hi = sayHi.call('hi')
