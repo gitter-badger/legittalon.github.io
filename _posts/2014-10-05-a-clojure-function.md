@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 ---
 
 ## I recently started learning a little bit of Clojure
