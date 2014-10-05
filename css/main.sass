@@ -11,9 +11,13 @@ h1, h2, h3, h4
   font-size: $fs-xl
   margin: 0
 
+code
+  width: inherit
+  overflow: scroll
+
 a
   color: black
-  text-decoration: none
+  text-decoration: underline
 
 a.link-verb
   font-weight: bold
@@ -21,15 +25,22 @@ a.link-verb
   font-size: $fs-xl
   margin-left: .4em
 
+a.title
+  text-decoration: none
+
+a.read
+  float: right
+  text-decoration: none
+
 html, body
   margin: 0
   padding: 0
   font-size: $fs
 
 .site-icon
-  position: absolute
-  top: $fs
-  left: $fs
+  position: fixed
+  bottom: $fs
+  right: $fs
 
 .elusive
   transition: all .5s
@@ -60,9 +71,10 @@ footer
 @media screen and (min-width:930px)
   .wrap-content
     max-width: 70%
+
   .site-icon
-    bottom: $fs
-    right: $fs
+    top: $fs
+    left: $fs
 
 .inline
   display: inline
