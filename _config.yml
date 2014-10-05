@@ -11,13 +11,16 @@ github_username: legittalon
 markdown: kramdown
 permalink: pretty
 
-highlighter: pygments
+# highlighter: pygments
+
+sass:
+  sass_dir: _sass
 
 # Defaults
 defaults:
   -
     scope:
       path: "" # all
-      type: "post"
+      type: "posts"
     values:
-      layout: "post"
+      layout: "posts"
