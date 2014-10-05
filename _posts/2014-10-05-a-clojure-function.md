@@ -2,9 +2,7 @@
 published: true
 ---
 
-## I recently started learning a little bit of Clojure
-
-This is the first useful function I've created. Well, I'd like to think it is useful anyway.
+I recently started learning a little bit of Clojure. This is the first useful function I've created. Well, I'd like to think it is useful anyway.
 
 ```
 (defn divisible-by?
