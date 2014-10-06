@@ -1,0 +1,29 @@
+- name: HTML
+  experience: 5 years
+
+- name: CSS
+  experience: 5 years
+
+- name: JavaScript
+  experience: 5 years
+
+- name: Linux
+  experience: 2 years
+
+- name: Functional Programming
+  experience: 1 year
+
+- name: Vagrant
+  experience: 4 months
+
+- name: Clojure
+  experience: 3 months
+
+- name: Haskell
+  experience: 3 months
+
+- name: Elm
+  experience: 3 months
+
+- name: Docker
+  experience: 1 month
