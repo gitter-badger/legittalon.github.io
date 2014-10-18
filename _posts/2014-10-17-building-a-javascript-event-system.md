@@ -12,10 +12,13 @@ without having to modify the module itself.
 We will take a look at the event pattern by building an event system from
 scratch.
 
-## The Spec
-
+## The API
+Here's what we're building will look like.
 {% highlight javascript %}
-// Tests.
+events.on('event', function(data) {
+  console.log(data.message) // hello
+})
+events.emit('event', {message: 'hello'})
 {% endhighlight %}
 
 ## The Essence of the Problem
