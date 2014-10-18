@@ -2,103 +2,164 @@
 published: true
 ---
 
-## For the learning of it!
+Demystifying JavaScript events by building an event system from scratch.
 
-Today we will learn how to build our own event system in javascript to enable such coding styles as:
+The event pattern is a great way to add extendibility and flexibility to your
+libraries and frameworks. Simply by emitting events on key actions inside your
+code you can allow users of your module to apply their own desired behavior
+without having to modify the module itself.
+
+We will take a look at the event pattern by building an event system from
+scratch.
+
+## The Spec
 
 {% highlight javascript %}
-event.on('event', function(stuff) {
-  // do things with stuff
-})
+// Tests.
 {% endhighlight %}
 
-## What are events?
+## The Essence of the Problem
 
-Events are just a string that identifies a name for the event and an array of functions executed when we emit that event name.
+If we distill events down to their core we discover that an event is nothing
+more than a `string`, or as we will call it in this post the namespace, and an
+`array` of `functions` attached to it.
 
-We need three things to get us up and running
-- an object mapping keys to an array of functions
-- .on method that attaches functions to event namespaces
-- .emit method that tells a namespace to run all of its functions
+So how do we,
 
-## Let's begin.
+* associate `strings` with an `array` of `functions`?
+* add `functions` to an `array`?
+* call each `function` in an `array` and also pass each one the same arguments?
 
-We will start by defining our namespace as an object.
+## Module
+
+To make our event system usable across a wide variety of libraries and
+frameworks we will define it as an object and, in this example, export so that
+it can be used with [browserify][browserify] or [node][node]. The rest of this
+post will assume that we are augmenting the `events` objects.
 
 {% highlight javascript %}
 var events = {}
+module.exports = events
 {% endhighlight %}
 
-We will add properties and methods onto this object and it can be used modularly by cloning it via the javascript `Object.prototype.create`
+## Key value, yo
 
-## events.events
-
-This is initialized as just an empty object. Internally it will follow the structure of `{'event name': []}` where the array contains functions.
-
-{% highlight javascript %}
-event.event = {}
-{% endhighlight %}
-
-## events.on
-
-The on method takes a string and a function and pushes the function to the appropriate namespace on the `events.events` object! `this` referes to the `events` object.
+Using a plain `object` is an elegant way to accomplish our first problem of
+associating namespaces with an `array` of `functions`. We can imagine the
+`object` will follow this schema:
 
 {% highlight javascript %}
-events.on = function(namespace, fn) {
-  /**
-   * If this is the first function provided to the namespace then
-   * the namespace will not be an array so we must first initialize it as an    
-   * array. Then we push the function to the array.
-   */
-  if (!(this.events[namespace] instanceof Array)) {
-    this.events = []
-  }
-  this.events[namespace].push(fn)
+{
+  'event': [fnOne, fnTwo, fnThree],
+  'event-two': [diffFnOne, diffFnTwo, diffFnThree]
 }
 {% endhighlight %}
 
-## events.emit
-
-Emitting an event should run all the functions attached to it and pass each function some arguments, if desired. We do a few tricky things in this function. 
-
-First we use the `arguments` object available inside all javascript functions. This is a pseudo-array of all the arguments with which the function was called. Psuedo-arrays are stupid javascript things that look like arrays but aren't descendant from the `Array.prototype`. Fortunately we can force psuedo-arrays to be real arrays by using a little `Function.prototype` trickery:
+To achieve this format we will simply define a property on our `object` called
+`events` that is an empty object. This will become more clear later. Think of
+this as a container for events.
 
 {% highlight javascript %}
-/**
- * This uses the `Function.prototype.call` method to pass the arguments
- * psuedo-array to the `Array.prototype.slice` function. This returns the     
- * psuedo-array as a descendant of the array letting us use `Array.prototype`
- * methods on it!
- */
-var args = Array.prototype.slice.call(arguments)
+Object.defineProperty(events, 'events' {
+  writable: true,
+  enumerable: false,
+  configurable: false,
+  value: {}
+})
 {% endhighlight %}
 
-Secondly we use the `Array.prototype.unshift` method which removes the first element from the array and returns it. We don't care about the first element so we do not capture the return value in a variable.
+## .push it baby
 
-Lastly we use the `Function.prototype.apply` method which takes a context to pass to the function as its `this` value and an array of arguments to also pass to the function.
+JavaScript has a really neat feature that is often taken for granted,
+first-class functions. This means that `functions` can be stored in `variables`,
+passed around inside of other `functions` as `arguments` and otherwise treated
+as just regular data. This makes it really easy to create an `array` of
+`functions`. All we need to do is use the [`Array.prototype.push`] [.push]
+`method` on an array and pass it the `function`!
 
-Here's the full method.
+To add a function to a namespace our `on` method should check if the namespace
+already exists as a key on the `events.events` object and if it doesn't, add it.
+Then push the function to it.
 
 {% highlight javascript %}
-events.emit = function(namespace) {
-  /**
-   * First check to see if the event has any functions associated with it.
-   * events that aren't arrays don't so return without doing anything.
-   *
-   * Otherwise call the event and pass in any arguments we want the event to  
-   * recieve.
-   */
-  if (!(this.events[namespace] instanceof Array) {
-    return
+Object.defineProperty(events, 'on', {
+  writable: false,
+  enumerable: false,
+  configurable: false,
+
+  value: function(namespace, fn) {
+    // if it's not an array make it one.
+    if (!(this.events[namespace] instanceof Array)) {
+      this.events[namespace] = []
+    }
+    // then push the fn to it.
+    this.events[namespace].push(fn)
   }
-  this.events[namespace].forEach(function(fn) {
+})
+{% endhighlight %}
+
+Well that was easy. That's our complete `.on` method!
+
+## .apply those functions
+
+We're going to get a little tricky here but it'll be fun.
+
+First thing is first, to loop through an array and get each `function` we're
+going to use [`Array.prototype.forEach`][.forEach]. Then we're going to call each
+`function` with [`Function.prototype.apply`][.apply] so that we can pass each
+function an array of arguments.
+
+We will also utilize the [`arguments`][arguments] object in order to take
+all the values passed after the namespace in the `.emit` method and pass them to
+the functions as arguments.
+
+The `arguments` object is an `array-like` object which means it's virtually
+useless unless we convert it into a true array. We will use
+[`Array.prototype.slice`][.slice] to convert it for us.
+
+{% highlight javascript %}
+Object.defineProperty(events, 'emit', {
+  writable: false,
+  enumerable: false,
+  configurable: false,
+
+  value: function(namespace /*, args */) {
+    // if this namespace isn't an array or is empty don't do anything with it.
+    if (
+         !(this.events[namespace] instanceof Array)
+      && this.events[namespace].length === 0
+    ) {
+      this.events[namespace] = []
+    }
+
+    // turn this functions arguments object into a true array
     var args = Array.prototype.slice.call(arguments)
+    // remove the first argument because that's the namespace
     args.shift()
-    fn.apply(null, args)
-  })
-}
+
+    // loop through each function
+    this.events[namespace].forEach(function(fn) {
+      // the first argument to apply determines `this` inside the function it
+      // it is applying. In our case, we don't care about it so we make it null.
+      fn.apply(null, args)
+    })
+  }
+})
 {% endhighlight %}
 
-## That's it
+## The Challenge
 
-Now you can subscribe to and emit events inside your application. Don't just stop here though. I challenge you to modify this object to have a `.off` method that takes some identifier and removes a function from an event. Good luck!
+We now have a working event system that can easily be added to other libraries
+and modules!
+
+Here's a challenge left to the reader:
+Concieve and implement a `.off` method that removes a specific function from a
+namespace.
+
+[browserify]: http://browserify.org
+[node]: http://nodejs.org
+[.push]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push
+[.slice]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice
+[.forEach]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
+[.apply]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/prototype
+[arguments]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments
