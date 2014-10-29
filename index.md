@@ -10,8 +10,8 @@ take a look at my [resume](/resume). If you are interested in
 receiving occasional email updates about me and the things I am working on
 [subscribe to my newsletter][tinyletter-talon].
 
-On [my Twitter][twitter-talon] I enjoy responding to Tweets. I am active on
-[my Github][github-talon] where I maintain various JavaScript projects. To be
+On my [Twitter][twitter-talon] I enjoy responding to Tweets. I am active on
+my [Github][github-talon] where I maintain various JavaScript projects. To be
 certain I am who I claim to be have a gander at my [Keybase][keybase-talon]
 profile.
 
