@@ -1,0 +1,82 @@
+==================================================================                                                                                                        [40/491]
+https://keybase.io/talon
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://theghostin.me
+  * I am talon (https://keybase.io/talon) on keybase.
+  * I have a public key with fingerprint 4432 10F0 40DF 4ABD E64D  12A9 07C4 6EF7 606A F14B
+
+To claim this, I am signing this object:
+
+{
+    "body": {
+        "client": {
+            "name": "keybase.io node.js client",
+            "version": "0.7.2"
+        },
+        "key": {
+            "fingerprint": "443210f040df4abde64d12a907c46ef7606af14b",
+            "host": "keybase.io",
+            "key_id": "07C46EF7606AF14B",
+            "uid": "2406d93e9856ce84c42516e312794f00",
+            "username": "talon"
+        },
+        "merkle_root": {
+            "ctime": 1414368720,
+            "hash": "5f34cbb3f88c07a4e3322703871fa319146d8e444f4b05a30e1bdea78159977a6e03a88fa57dcd58363274ea51b6dcf6a91f0cd0f22411a8ed5afbe2eb8bf870",
+            "seqno": 86648
+        },
+        "service": {
+            "hostname": "theghostin.me",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1414368960,
+    "expire_in": 157680000,
+    "prev": "0372d37efe001933ea75e5f8a542dc11064e4524bdc0ac6200440c9ba8269c77",
+    "seqno": 16,
+    "tag": "signature"
+}
+
+with the aforementioned key, yielding the PGP signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: GnuPG v1
+
+owFVUn9MVWUYvtwQAwERmtqshkdDDLx955zv/CKwyCAscEQCExm38+M7cC6Xe673
+XghEcEWhbHoNoQiECBMQqFGW5DQJmAyFzWioyHLqDfsBwZy6ASuUzmG68vvre/c+
+7/M+z/u+HwU8YTB6LT1nm33HcudNr6EJwbA9yd1TjAmqVIRFFWOiVUE2l/6z8XkI
+i8JyUZHAO5FJUUNtqoRMFmfoQ0wkVoAcTkW1aShgYkwEVhKpw/ViWbFlI4fdoehc
+GIQkgQMZQCDJkBckREMJJ3gOMCKkkczQgOZlHAoaZY7qdD3WFVvkNCuS3oXZAum4
+eB0fG4/DV7Vc/mKCgICWOBJxLEWLiIUiJCicRiROMByUAdCBTuR4aMnFWzXRmtg8
+5Mi1IrNDVRcdiy5Fz+MQhyTNMgTQ5PDOHK2CkkkoCgIps6wIGB4ikiQIBpAsg8s8
+iXM4pCUWQQhlKACKJwHCNZc8w+IUxzEMTyNA8iwr8xQjiRLFkjRJMBDxFC7QkijT
+PIfLQJSATBAQx3kWSRQvC4hAAivILKPrd6JdNhWLYmkasiV66ChQRKTL1kf2yFkO
+ytZDxWbS4kjM7lBdqqhatVSOy2WP0k27iuw69F0kmDWSDp3FLCg2SdvY/1eKa9DH
+B8LR2kBQoV1xILOiIyiGZoH29D6oQN8PyRASySAZAYBzJKlNgEKUzPIUJCQRxwEN
+EaQIKEgi4EWaAABCIHICzxI0JzLMfzZxWhPKZ2ucTiXbxrvyHQgrqTA+423wMhp8
+lhj1ozX4+QY9uuThouULcdOul1O3NBzIPGrYdrsmbXV16R7vVv/J5d69TdD6/Fhl
+88nD8OrRb7+Q3IXLTpRUJWxvKXNdfjpqsvVAefv8T/kev99+73v9cEr0vtG0TDK0
+9Et3wonyfT+GOVOmVlzJunc2kbPdPFQ18utwRt3BhEvPJt/123Q7rsydtSF3KuTG
+c/d3n/dEv/FgcG6u/P74yNgnQ4V/rGn6J57vdxw5HjwY81166/jqz9Ibqzv3DP0Q
+s4I1xJaF+wTP7mhK9WqL6C2qaJ1I8V9lK87oa1/f0H2xZWNXc1jdsUt/Jjck+2Sl
+39mcF3kuKSh/0mJsVnebfBc8X5uid91wm5lT/S8mJRZs8vTG+Rwc3p8hrXkpd+Zm
+t/RWwLGFjqq6xoHRK6N46sRrFyuHKi2ny2ZWRp5PjcfmU+UP304Inrk2Uh8pbxaf
+rNkRPvHeTl/VHCZZ690Xvgm7dvnjTEX0RzB5zIf0HM8IZLuEtV8tnQqMqw9nu67u
+jdhmHJudK/RdvzMkum0w4ueBlNPge//Ou2fIxFLLVk811uBM6q794IWW91fVOu59
+ytUUwbN14znlHRHLojp7ssj9jHxrrWfYGNR+PaatbXqz3VReVVvY5/d5mvtMy4OA
+I2OewFcqYjP3zv89cPLQug0XLLeqGwN8rE/5z1b1TAddrwnZuM6SRoWs/Gtqa3/7
+kl98Exv6Guyn/P8F
+=CNYD
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/talon
+
+==================================================================
