@@ -2,20 +2,32 @@
 ---
 
 @import "syntax-highlighting"
+@import "mixins.sass"
+@import "vars.sass"
+@import "general.sass"
 
-$fs-xl: 2em
-$fs: 1.2em
-$fs-xs: .8em
+// -- Base Styles -------------------------------------------------------------
 
-h1
-  font-size: $fs-xl
+html,body
   margin: 0
+  padding: 0
+  font-size: $fs-base
+  font-family: $ff-serif
 
-.job
-  h3
-    padding-left: .5em
-  p
-    padding-left: 1.3em
+h1,h2,h3,h4,h5,h6
+  font-family: $ff-sans-serif
+
+p
+  font-size: $fs-m
+
+nav
+  font-size: $fs-m
+
+a
+  color: black
+  text-decoration: underline
+a:hover
+  text-decoration: none
 
 hr
   height: 1px
@@ -23,17 +35,43 @@ hr
   background: #ddd
 
 pre
+  font-size: $fs-s
   width: 100%
-  overflow: scroll
+  overflow-x: scroll
 
-a
-  color: black
-  text-decoration: underline
+ul
+  font-size: $fs-m
+
+footer
+  font-size: $fs-s
+  padding: $padding-medium
+  margin-top: $margin-medium
+  position: fixed
+  bottom: -100%
+
+nav
+  > ul
+    padding: 0
+    font-size: $fs-s
+    list-style-type: none
+    > li
+      display: inline
+
+.seperator.pipe
+  > li:after
+    content: " | "
+  > li:last-child:after
+    content: ""
+
+.wrap-content
+  max-width: 100%
+  padding: $padding-medium
+  margin: 0 auto
 
 a.link-verb
   font-weight: bold
   display: block
-  font-size: $fs-xl
+  font-size: $fs-l
   margin-left: .4em
 
 a.title
@@ -43,49 +81,38 @@ a.read
   float: right
   text-decoration: none
 
-html, body
-  margin: 0
-  padding: 0
-  font-size: $fs
-
 .site-icon
   position: fixed
-  bottom: $fs
-  right: $fs
+  bottom: $fs-m
+  right: $fs-m
 
-.elusive
+.job
+  h3
+    padding-left: .5em
+  p
+    padding-left: 1.3em
+
+.tilty
   transition: all .5s
   -webkit-transform: translateZ(0)
-.elusive:hover
-  transition: all .5s
+.tilty:hover
+  transition: all .6s
   -webkit-transform: rotate(12deg)
   -moz-transform:    rotate(12deg)
   -ms-transform:     rotate(12deg)
   -o-transform:      rotate(12deg)
   transform:         rotate(12deg)
 
-footer
-  font-size: $fs-xs
-  padding: $fs
-  margin-top: $fs
-  position: fixed
-  bottom: -100%
-
 .post-teaser
-  margin-bottom: $fs-xl
-
-.wrap-content
-  max-width: 100%
-  padding: $fs
-  margin: 0 auto
+  margin-bottom: $fs-l
 
 @media screen and (min-width:930px)
   .wrap-content
     max-width: 70%
 
   .site-icon
-    top: $fs
-    left: $fs
+    top: $fs-m
+    left: $fs-m
 
 .inline
   display: inline

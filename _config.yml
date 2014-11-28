@@ -4,17 +4,37 @@ email: talon@theghostin.me
 description: "Talon lives."
 baseurl: ""
 url: "theghostin.me"
+
 twitter_username: legittalon
 github_username: legittalon
+keybase_username: talon
+tinyletter_username: talon
+
+nav:
+  #- text: "about"
+  #  url: "/about"
+  - text: "blog"
+    url: "/blog"
+  - text: "resume"
+    url: "/resume"
 
 # Build settings
 markdown: kramdown
 permalink: pretty
 
-# highlighter: pygments
+exclude: ['js/src/**']
+encoding: utf-8
 
 sass:
   sass_dir: _sass
+
+gems: ["jekyll-press", "emoji_for_jekyll"]
+
+jekyll-press:
+  exclude: ['js/src/**', 'css/animate.css']
+  js_options: {}      # js minifier options
+  css_options: {}     # css minifier options
+  html_options: {}    # html minifier options
 
 # Defaults
 defaults:
