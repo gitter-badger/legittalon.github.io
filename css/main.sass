@@ -57,34 +57,26 @@ nav
     > li
       display: inline
 
+// -- Decorators --------------------------------------------------------------
+
 .seperator.pipe
   > li:after
     content: " | "
   > li:last-child:after
     content: ""
 
+.vertical-rhythm
+  margin-bottom: $margin-medium
+
 .wrap-content
   max-width: 100%
   padding: $padding-medium
   margin: 0 auto
 
-a.link-verb
-  font-weight: bold
-  display: block
-  font-size: $fs-l
-  margin-left: .4em
-
-a.title
-  text-decoration: none
-
-a.read
-  float: right
-  text-decoration: none
-
 .site-icon
   position: fixed
-  bottom: $fs-m
-  right: $fs-m
+  bottom: $padding-thin
+  right: $padding-thin
 
 .job
   h3
@@ -103,9 +95,6 @@ a.read
   -o-transform:      rotate(12deg)
   transform:         rotate(12deg)
 
-.post-teaser
-  margin-bottom: $fs-l
-
 @media screen and (min-width:930px)
   .wrap-content
     max-width: 70%
@@ -113,6 +102,3 @@ a.read
   .site-icon
     top: $fs-m
     left: $fs-m
-
-.inline
-  display: inline

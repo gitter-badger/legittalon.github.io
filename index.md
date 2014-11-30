@@ -6,6 +6,6 @@ layout: default
 
 Welcome to my website. I hope you are doing well.
 
-<i class="pull-right">- Talon :ghost:</i>
+*- Talon* :ghost:
 
 {% include nav.html %}
