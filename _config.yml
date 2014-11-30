@@ -15,8 +15,8 @@ nav:
   #  url: "/about"
   - text: "blog"
     url: "/blog"
-  - text: "resume"
-    url: "/resume"
+  - text: "projects"
+    url: "/projects"
 
 # Build settings
 markdown: kramdown
